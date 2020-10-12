@@ -1,3 +1,4 @@
+{% load humanize %} 
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,26 +30,26 @@
     <div class="container">
       <div class="row mt-4">
         <div class="col">
-          <div class="col-md">
+          <div class="col-md col-xs-12">
             <div class="card text-center text-white mb-3" id="orders-delivered">
               <div class="card-header header">
                 <h5 class="card-title">TOTAL INCOME</h5>
               </div>
               <div class="card-body">
-                <h3 class="card-title amonunt text-dark">{{sums.total}}</h3>
+                <h3 class="card-title amonunt text-dark">{{sums.total|intcomma}}</h3>
               </div>
             </div>
           </div>
         </div>
 
         <div class="col">
-          <div class="col-md">
+          <div class="col-m col-xs-12">
             <div class="card text-center text-white mb-3" id="orders-delivered">
               <div class="card-header header">
                 <h5 class="card-title">TOTAL EXPENSE</h5>
               </div>
               <div class="card-body">
-                <h3 class="card-title text-dark">{{expense_sum.total}}</h3>
+                <h3 class="card-title text-dark">{{expense_sum.total|intcomma}}</h3>
               </div>
             </div>
           </div>
@@ -70,13 +71,13 @@
       </div>
       <div class="row mt-4">
         <div class="col-md-6">
-          <table class="table table-striped">
+          <table class="table table-striped text-center">
             <thead>
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Income Title</th>
                 <th scope="col">Amount</th>
-                <th scope="col">Date and Time</th>
+                <th scope="col">Added</th>
               </tr>
             </thead>
             <tbody>
@@ -84,21 +85,21 @@
               <tr>
                 <th scope="row">{{income.id}}</th>
                 <td>{{income.title}}</td>
-                <td><span>Rs</span> {{income.amount}}</td>
-                <td>{{income.datetime}}</td>
+                <td><span>Rs</span> {{income.amount|intcomma}}</td>
+                <td>{{income.datetime|naturaltime}}</td>
               </tr>
               {% endfor %}
             </tbody>
           </table>
         </div>
         <div class="col-md-6">
-          <table class="table table-striped">
+          <table class="table table-striped text-center">
             <thead>
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Expense Title</th>
                 <th scope="col">Amount</th>
-                <th scope="col">Date and Time</th>
+                <th scope="col">Added</th>
               </tr>
             </thead>
             <tbody>
@@ -106,8 +107,8 @@
               <tr>
                 <th scope="row">{{expense.id}}</th>
                 <td>{{expense.title}}</td>
-                <td><span>Rs</span> {{expense.amount}}</td>
-                <td>{{expense.datetime}}</td>
+                <td><span>Rs</span> {{expense.amount|intcomma}}</td>
+                <td>{{expense.datetime|naturaltime}}</td>
               </tr>
               {% endfor %}
             </tbody>
